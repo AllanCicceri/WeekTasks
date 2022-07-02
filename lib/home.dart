@@ -12,10 +12,9 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   final List<TaskModel> _tasksList = [];
 
-  _addTask(String title, String desc) {
+  _addTask(String title, String desc, DateTime date) {
     setState(() {
-      TaskModel myTask =
-          TaskModel('dsadsad', 'vo', 'vovozinhanha', DateTime.now(), false);
+      TaskModel myTask = TaskModel('dsadsad', title, desc, date, false);
 
       _tasksList.add(myTask);
     });
