@@ -1,37 +1,36 @@
 import 'package:flutter/material.dart';
-import '../models/task_model.dart';
+import 'package:intl/intl.dart';
 
 class Task extends StatelessWidget {
   final String title;
   final String description;
+  final DateTime date;
+  final bool done;
 
-  Task(this.title, this.description);
+  Task(this.title, this.description, this.date, this.done);
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
-        Container(
-          height: 100,
-          child: Card(
-            elevation: 6,
-            child: Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(title),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Text(description),
-                ],
+    return Card(
+      elevation: 6,
+      child: ListTile(
+        title: Text(title),
+        trailing: Column(
+          children: [
+            Text(DateFormat('dd/MM/y').format(date),
+                style: TextStyle(
+                  fontSize: 12,
+                )),
+            Flexible(
+              child: Checkbox(
+                value: false,
+                onChanged: (_) => true,
               ),
             ),
-          ),
+          ],
         ),
-      ],
+        subtitle: Text('miunha desc'),
+      ),
     );
   }
 }

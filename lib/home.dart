@@ -32,7 +32,7 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('ToDoList'),
+        title: Text('Week List'),
         actions: [
           Container(
               padding: EdgeInsets.all(10),
@@ -50,7 +50,10 @@ class _HomeState extends State<Home> {
           ? Text('No tasks today')
           : Column(
               children: _tasksList.map((task) {
-                return Task(task.title, task.description);
+                return Container(
+                    height: 100,
+                    child: Task(
+                        task.title, task.description, task.date, task.done));
               }).toList(),
             ),
     );
