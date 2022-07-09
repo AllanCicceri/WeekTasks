@@ -10,7 +10,7 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  final List<TaskModel> _tasksList = [];
+  List<TaskModel> _tasksList = [];
 
   _addTask(String title, String desc, DateTime date) {
     setState(() {
@@ -52,8 +52,8 @@ class _HomeState extends State<Home> {
               children: _tasksList.map((task) {
                 return Container(
                     height: 100,
-                    child: Task(
-                        task.title, task.description, task.date, task.done));
+                    child: Task(task.id, task.title, task.description,
+                        task.date, task.done));
               }).toList(),
             ),
     );
