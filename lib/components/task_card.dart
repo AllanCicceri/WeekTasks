@@ -14,7 +14,14 @@ class Task extends StatelessWidget {
     return Card(
       elevation: 6,
       child: ListTile(
-        title: Text(title),
+        title: Text(
+          title,
+          style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+        ),
+        subtitle: Text(
+          description,
+          style: TextStyle(fontSize: 12),
+        ),
         trailing: Column(
           children: [
             Text(DateFormat('dd/MM/y').format(date),
@@ -29,7 +36,6 @@ class Task extends StatelessWidget {
             ),
           ],
         ),
-        subtitle: Text('miunha desc'),
       ),
     );
   }
