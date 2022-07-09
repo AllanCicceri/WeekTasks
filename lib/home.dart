@@ -32,22 +32,22 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Week List'),
+        title: Text(
+          'Week Tasks',
+          style: Theme.of(context).textTheme.headline1,
+        ),
         actions: [
           Container(
               padding: EdgeInsets.all(10),
               child: FloatingActionButton(
                 onPressed: () => _showAddTaskFormModal(context),
-                child: Icon(
-                  Icons.add,
-                  color: Colors.blue,
-                ),
+                child: Icon(Icons.add, color: Colors.grey[850]),
                 backgroundColor: Colors.white,
               ))
         ],
       ),
       body: _tasksList.length == 0
-          ? Text('No tasks today')
+          ? Text('No tasks this week...')
           : Column(
               children: _tasksList.map((task) {
                 return Container(

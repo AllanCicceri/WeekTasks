@@ -17,24 +17,21 @@ class Task extends StatefulWidget {
 class _TaskState extends State<Task> {
   @override
   Widget build(BuildContext context) {
-    print('situação: ${widget.done}');
     return Card(
       elevation: 6,
       child: ListTile(
         title: Text(
           widget.title,
-          style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+          style: Theme.of(context).textTheme.headline2,
         ),
         subtitle: Text(
           widget.description,
-          style: TextStyle(fontSize: 12),
+          style: Theme.of(context).textTheme.headline3,
         ),
         trailing: Column(
           children: [
             Text(DateFormat('dd/MM/y').format(widget.date),
-                style: TextStyle(
-                  fontSize: 12,
-                )),
+                style: Theme.of(context).textTheme.headline3),
             Flexible(
               child: Checkbox(
                 value: widget.done,
