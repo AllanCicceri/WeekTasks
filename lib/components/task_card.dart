@@ -28,21 +28,28 @@ class _TaskState extends State<Task> {
           widget.description,
           style: Theme.of(context).textTheme.headline3,
         ),
-        trailing: Column(
-          children: [
-            Text(DateFormat('dd/MM/y').format(widget.date),
-                style: Theme.of(context).textTheme.headline3),
-            Flexible(
-              child: Checkbox(
-                value: widget.done,
-                onChanged: (_) {
-                  setState(() {
-                    widget.done = !widget.done;
-                  });
-                },
+        trailing: Padding(
+          padding: const EdgeInsets.all(10),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(DateFormat('dd/MM/y').format(widget.date),
+                  style: Theme.of(context).textTheme.headline3),
+              Flexible(
+                child: Container(
+                  padding: EdgeInsets.all(20),
+                  child: Checkbox(
+                    value: widget.done,
+                    onChanged: (_) {
+                      setState(() {
+                        widget.done = !widget.done;
+                      });
+                    },
+                  ),
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
