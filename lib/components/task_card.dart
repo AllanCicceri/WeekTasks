@@ -33,11 +33,13 @@ class _TaskState extends State<Task> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(DateFormat('dd/MM/y').format(widget.date),
-                  style: Theme.of(context).textTheme.headline3),
+              Container(
+                margin: EdgeInsets.only(bottom: 10),
+                child: Text(DateFormat('dd/MM/y').format(widget.date),
+                    style: Theme.of(context).textTheme.headline3),
+              ),
               Flexible(
                 child: Container(
-                  padding: EdgeInsets.all(20),
                   child: Checkbox(
                     value: widget.done,
                     onChanged: (_) {
