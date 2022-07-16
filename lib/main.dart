@@ -32,6 +32,10 @@ class ToDoApp extends StatelessWidget {
         appBarTheme: AppBarTheme(
           color: Colors.grey[200],
         ),
+        listTileTheme: ListTileThemeData(
+          tileColor: Colors.white,
+          selectedColor: Colors.grey[200],
+        ),
       ),
       home: Home(),
     );

@@ -20,9 +20,14 @@ class _TaskState extends State<Task> {
     return Card(
       elevation: 6,
       child: ListTile(
+        tileColor: widget.done
+            ? Theme.of(context).listTileTheme.selectedColor
+            : Theme.of(context).listTileTheme.tileColor,
         title: Text(
           widget.title,
-          style: Theme.of(context).textTheme.headline2,
+          style: widget.done
+              ? Theme.of(context).textTheme.headline3
+              : Theme.of(context).textTheme.headline2,
         ),
         subtitle: Text(
           widget.description,
