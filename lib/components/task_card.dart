@@ -7,8 +7,10 @@ class Task extends StatefulWidget {
   final String description;
   final DateTime date;
   bool done;
+  void Function(int id) _setTaskDone;
 
-  Task(this.id, this.title, this.description, this.date, this.done);
+  Task(this.id, this.title, this.description, this.date, this.done,
+      this._setTaskDone);
 
   @override
   State<Task> createState() => _TaskState();
@@ -48,9 +50,7 @@ class _TaskState extends State<Task> {
                   child: Checkbox(
                     value: widget.done,
                     onChanged: (_) {
-                      setState(() {
-                        widget.done = !widget.done;
-                      });
+                      widget._setTaskDone(widget.id);
                     },
                   ),
                 ),

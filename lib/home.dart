@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:todoapp/components/task_form.dart';
 import 'package:todoapp/models/task_model.dart';
 import 'components/task_card.dart';
@@ -32,6 +33,36 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
+    _sortList() {
+      setState(() {
+        List<TaskModel> saveStateList = _tasksList;
+        _tasksList.sort((a, b) {
+          if (b.done) {
+            return -1;
+          }
+          return 1;
+        });
+
+        _tasksList.forEach((element) {
+          saveStateList.forEach((el) {
+            if (el.id == element.id) {
+              element.done = el.done;
+              return;
+            }
+          });
+        });
+      });
+    }
+
+    void _setTaskDone(id) {
+      _tasksList.forEach((element) {
+        if (element.id == id) {
+          element.done = !element.done;
+        }
+      });
+      _sortList();
+    }
+
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -55,7 +86,7 @@ class _HomeState extends State<Home> {
                 return Container(
                     height: 100,
                     child: Task(task.id, task.title, task.description,
-                        task.date, task.done));
+                        task.date, task.done, (_) => _setTaskDone(task.id)));
               }).toList(),
             ),
     );
