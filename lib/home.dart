@@ -1,6 +1,7 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:todoapp/components/task_form.dart';
-import 'package:todoapp/components/tasks_list.dart';
 import 'package:todoapp/models/task_model.dart';
 import 'components/task_card.dart';
 
@@ -14,7 +15,8 @@ class _HomeState extends State<Home> {
 
   _addTask(String title, String desc, DateTime date) {
     setState(() {
-      TaskModel myTask = TaskModel('dsadsad', title, desc, date, false);
+      final id = Random().nextInt(500);
+      TaskModel myTask = TaskModel(id, title, desc, date, false);
 
       _tasksList.add(myTask);
     });

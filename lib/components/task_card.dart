@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 class Task extends StatefulWidget {
-  final String id;
+  final int id;
   final String title;
   final String description;
   final DateTime date;

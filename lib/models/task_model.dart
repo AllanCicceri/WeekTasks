@@ -1,5 +1,5 @@
 class TaskModel {
-  String id;
+  int id;
   String title;
   String description;
   DateTime date;
