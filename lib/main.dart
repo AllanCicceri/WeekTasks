@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:sembast/sembast.dart';
-import 'package:sembast/sembast_io.dart';
 import 'package:todoapp/home.dart';
 
 void main() {

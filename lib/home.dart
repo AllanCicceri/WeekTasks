@@ -1,7 +1,6 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:todoapp/components/task_form.dart';
 import 'package:todoapp/models/task_model.dart';
 import 'components/task_card.dart';
@@ -27,33 +26,33 @@ class _HomeState extends State<Home> {
     showModalBottomSheet(
         context: context,
         builder: (_) {
-          return TaskForm(_addTask);
+          return TaskForm(_addTask, _sortList);
         });
+  }
+
+  _sortList() {
+    setState(() {
+      List<TaskModel> saveStateList = _tasksList;
+      _tasksList.sort((a, b) {
+        if (b.done) {
+          return -1;
+        }
+        return 1;
+      });
+
+      _tasksList.forEach((element) {
+        saveStateList.forEach((el) {
+          if (el.id == element.id) {
+            element.done = el.done;
+            return;
+          }
+        });
+      });
+    });
   }
 
   @override
   Widget build(BuildContext context) {
-    _sortList() {
-      setState(() {
-        List<TaskModel> saveStateList = _tasksList;
-        _tasksList.sort((a, b) {
-          if (b.done) {
-            return -1;
-          }
-          return 1;
-        });
-
-        _tasksList.forEach((element) {
-          saveStateList.forEach((el) {
-            if (el.id == element.id) {
-              element.done = el.done;
-              return;
-            }
-          });
-        });
-      });
-    }
-
     void _setTaskDone(id) {
       _tasksList.forEach((element) {
         if (element.id == id) {
@@ -73,7 +72,9 @@ class _HomeState extends State<Home> {
           Container(
               padding: EdgeInsets.all(10),
               child: FloatingActionButton(
-                onPressed: () => _showAddTaskFormModal(context),
+                onPressed: () {
+                  _showAddTaskFormModal(context);
+                },
                 child: Icon(Icons.add, color: Colors.grey[850]),
                 backgroundColor: Colors.white,
               ))
